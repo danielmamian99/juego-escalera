@@ -1,0 +1,66 @@
+public class game {
+  Map<integer, integer> mapSS = new Map<integer, integer>{3 => 11, 6 => 17, 9 => 18, 10 => 12, 14 => 4, 19 => 8, 22 => 20, 24 => 16};
+  
+  public class Player {
+      @testVisible integer position = 0;
+      @testVisible boolean win = false;
+      public Player(integer positionPlayer,boolean winPlayer){
+          position = positionPlayer;
+          win = winPlayer;
+      }
+  }
+  public list<Player> createPlayers(integer num) {
+      list<Player>listOfPlayers = new list<Player>();
+      for(integer i = 0; i<num; i++){
+          Player player = new Player(0,false);
+          listOfPlayers.add(player);
+      }
+      return  listOfPlayers ;
+  } 
+  public Player move(Player player, integer numMove, integer goal){
+      if((player.position + numMove)==goal){
+          player.position = goal;
+          player.win = true;
+      }
+      else if((player.position + numMove)>=goal){
+          numMove = numMove - (goal-player.position);
+          player.position = (goal-numMove);
+          
+      }
+      else{
+          player.position = player.position + numMove;
+      }
+      
+      if(mapSS.get(player.position) != null){
+          player.position = mapSS.get(player.position);
+      }
+      return player;
+  }
+  
+  
+  public void init(){
+      boolean win = false;
+      integer turno = -1;
+      integer logTurn = turno +1;
+      integer numPlayers = 3; // Definir numero de jugadores
+      integer dimension1 = 5; // Definir dimencion 1
+      integer dimension2 = 5; // Definir dimencion 2
+      integer goal = dimension1 * dimension2;
+      list<Player>listOfPlayers = createPlayers(numPlayers);
+      while(!win){
+          if(turno < numPlayers-1){
+              turno = turno +1;
+          }else{
+              turno = 0;
+          }
+          logTurn = turno +1;
+          System.debug('turno del jugador: ' + logTurn);
+          integer dado = Integer.valueof((Math.random() * 5))+1;
+          System.debug('jugador: ' + logTurn + ' avanza: ' + dado);
+          listOfPlayers[turno] = move(listOfPlayers[turno], dado, goal);
+          System.debug('jugador: ' + logTurn + ' termina en la casilla : ' + listOfPlayers[turno].position);
+          win = listOfPlayers[turno].win;
+      }
+      System.debug('ganó el jugador: ' + logTurn);
+  }
+}

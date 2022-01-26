@@ -1,0 +1,22 @@
+@isTest
+public class createPlayersClassTest {
+    static list<game.Player>listOfPlayers = new list<game.Player>();
+    
+	// se probrará que la función createPlayers crea los jugadores se crean correctamente
+  @TestSetup
+  private static void createTestData() {
+    // se probará con 3 jugadores
+    game tablero = new game();
+    listOfPlayers = tablero.createPlayers(3);
+  }
+
+  @isTest
+  private static void myTestMethod() {
+    //Todos los jugadores deben empezar en la casilla 0 y con win en false,
+    for(integer i = 0; i<listOfPlayers.size(); i++){
+        System.AssertEquals(listOfPlayers[i].position, 0);
+        System.AssertEquals(listOfPlayers[i].win, false);
+        System.AssertEquals(listOfPlayers.size(), 3);
+    }
+  }
+}

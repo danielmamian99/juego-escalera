@@ -1,0 +1,24 @@
+@isTest
+public class SnakeAndStairsClassTest {
+  // se probará que las casillas con escaleras o serpientes funcionan correctamente
+  static list<integer> stairsAndSnakes = new list<integer>();
+  static Map<integer, integer> mapSS = new Map<integer, integer>();
+  static game.Player player = new game.Player(0,false);
+  @TestSetup
+  private static void createTestData() {
+    // Se crea la lista de casillas con serpientes o escaleras, y se mapea su respectiva posición resultado
+      stairsAndSnakes = new list<integer>{3,6,9,10,14,19,22,24};
+      mapSS = new Map<integer, integer>{3 => 11, 6 => 17, 9 => 18, 10 => 12, 14 => 4, 19 => 8, 22 => 20, 24 => 16};
+  }
+ 
+  @isTest
+  private static void myTestMethod() {
+    //se probará que todas las casillas con escalera o serpiente llevan a la posición correcta
+    for(integer i = 0; i<stairsAndSnakes.size(); i++){
+        player.position = 0;
+        game tablero = new game();
+        player = tablero.move(player,stairsAndSnakes[i], 25);
+        System.AssertEquals(player.position, mapSS.get(stairsAndSnakes[i]));
+    }
+  }
+}

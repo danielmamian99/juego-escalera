@@ -1,0 +1,13 @@
+@isTest
+public class WinClassTest {
+   // se crea un player
+  static game.Player player = new game.Player(0,false);
+ 
+  @isTest
+  private static void myTestMethod() {
+    //El jugador gana cuando llega a la meta
+    game tablero = new game();
+    player = tablero.move(player, 25, 25);
+    System.AssertEquals(player.win, true);
+  }
+}

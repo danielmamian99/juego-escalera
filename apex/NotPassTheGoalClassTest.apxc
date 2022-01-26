@@ -1,0 +1,14 @@
+@isTest
+public class NotPassTheGoalClassTest {
+	// se probará que el jugador no pase de la casilla 25, y se devuelva las posiciones correspondientes
+    // se crea un jugador a 2 casillas de la meta
+    // con un dado de 6, debería quedar en la posición 21
+  static game.Player player = new game.Player(23,false);
+  @isTest
+  private static void myTestMethod() {
+    //Si el jugador se mueve 4 casillas debería volver a la casilla 23 y no pasar de largo
+    game tablero = new game();
+    player = tablero.move(player, 6, 25);
+    System.AssertEquals(player.position, 21);
+  }
+}
