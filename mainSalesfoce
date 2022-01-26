@@ -1,0 +1,14 @@
+integer numPlayers = 3; // Definir numero de jugadores
+dimencion1 = 5; // Definir dimencion 1
+dimencion2 = 5; // Definir dimencion 2
+
+public class Player {
+    integer position = 0;
+    boolean win = false;
+    public Player(integer position,boolean win){
+        position = position;
+        win = win;
+    }
+}
+Player player1 = new Player(0,false);
+System.debug(player1);
