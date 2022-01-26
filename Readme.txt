@@ -8,4 +8,4 @@ exactamente en la casilla 25
 
 2. La primera entrada es para definir el número de jugadores.
 
-3. La segunda y tecera entrada es para definir la dimeción 1 y 2 del tablero.
+3. La segunda y tecera entrada es para definir la dimensión 1 y 2 del tablero.
